@@ -5,6 +5,7 @@ This project uses graph neural networks to predict which H&M articles are likely
 ## Dataset
 
 The project uses the [RelBench H&M dataset](https://relbench.stanford.edu/), which contains:
+
 - Customer transactions
 - Article metadata (product type, color, department, etc.)
 - Over 15 million transactions across 58,929 unique articles
@@ -16,6 +17,7 @@ The data is structured as a weighted undirected graph where:
 **Nodes:** Each node represents a unique H&M article (58,929 nodes total)
 
 **Node Features:** Each article is represented by 9 encoded features from the article metadata:
+
 - Product name
 - Product type number
 - Graphical appearance number
@@ -38,6 +40,7 @@ The graph contains approximately 7 million co-purchase pairs across the training
 1. Install [uv](https://github.com/astral-sh/uv) package manager (if not already installed)
 
 2. Initialize the project and install dependencies:
+
 ```bash
 uv sync
 ```
@@ -53,6 +56,7 @@ The notebooks can be run independently on Google Colab. Each notebook includes s
 **Important:** Run the notebooks in the following order:
 
 1. **First, run `data_preprocessing.ipynb`:**
+
    - Downloads the RelBench H&M dataset
    - Processes transactions into co-purchase pairs
    - Creates graph structure with article features
@@ -71,6 +75,7 @@ Upload either notebook to Google Colab and run all cells. Each notebook is self-
 ## Model Architecture
 
 The model uses a lightweight Graph Neural Network with:
+
 - 2-layer GraphSAGE convolution
 - Batch normalization and dropout for regularization
 - Link prediction via dot product of learned node embeddings
@@ -81,15 +86,3 @@ The model uses a lightweight Graph Neural Network with:
 - **Validation AUC:** 0.89
 - **Test AUC:** 0.87
 - **Test AP:** 0.85
-
-## Requirements
-
-- Python 3.8+
-- PyTorch
-- PyTorch Geometric
-- RelBench
-- pandas
-- scikit-learn
-- matplotlib
-- seaborn
-- tqdm
